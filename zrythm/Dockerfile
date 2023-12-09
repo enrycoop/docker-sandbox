@@ -50,16 +50,15 @@ RUN dnf update -y && dnf install -y \
     gettext \
     help2man \
     flex \
-    xdg-utils
+    xdg-utils \
+    nano \
+    wget
 
-RUN git clone https://github.com/tlsa/libcyaml.git
-WORKDIR libcyaml
-RUN make && make install
 
-WORKDIR /usr/local/app
-
+RUN wget https://download.copr.fedorainfracloud.org/results/ycollet/audinux/fedora-39-x86_64/06409105-libcyaml/libcyaml-1.2.0-2.fc39.x86_64.rpm
+RUN wget https://download.copr.fedorainfracloud.org/results/ycollet/audinux/fedora-39-x86_64/06409105-libcyaml/libcyaml-devel-1.2.0-2.fc39.x86_64.rpm
 RUN git clone https://github.com/zrythm/zrythm.git
-WORKDIR zrythm
+
 #libbacktrace missig
 #libcyaml maybe
 
